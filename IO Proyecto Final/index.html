@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Simplex Matricial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Generador de Simplex Matricial</h1>
+        <div id="step-1" class="step active">
+            <h2>Paso 1: Cantidad de Variables</h2>
+            <div class="form-group">
+                <label for="cantidad-variables">Cantidad de Variables:</label>
+                <input type="number" id="cantidad-variables" min="1" required>
+            </div>
+            <button onclick="goToStep(2)">Siguiente</button>
+        </div>
+        <div id="step-2" class="step">
+            <h2>Paso 2: Función Objetivo</h2>
+            <div class="form-group">
+                <label>Función Objetivo:</label>
+                <div>
+                    <input type="radio" id="maximizar" name="tipo-objetivo" value="maximizar" checked>
+                    <label for="maximizar">Maximizar</label>
+                    <input type="radio" id="minimizar" name="tipo-objetivo" value="minimizar">
+                    <label for="minimizar">Minimizar</label>
+                </div>
+            </div>
+            <div id="coeficientes"></div>
+            <button onclick="goToStep(1)">Anterior</button>
+            <button onclick="goToStep(3)">Siguiente</button>
+        </div>
+        <div id="step-3" class="step">
+            <h2>Paso 3: Restricciones</h2>
+            <div id="restricciones">
+            </div>
+            <button onclick="addRestriction()">Agregar Restricción</button>
+            <button onclick="removeRestriction()">Eliminar Restricción</button>
+            <button onclick="goToStep(2)">Anterior</button>
+            <button onclick="generarSimplex()">Generar Simplex</button>
+        </div>
+        <div id="result-container" style="display: none;">
+            <h2>Resultados</h2>
+            <div id="valores-ingresados">
+                <h3>Valores Ingresados</h3>
+                <pre id="valores"></pre>
+            </div>
+            <div id="matriz-simplex">
+                <h3>Matriz Simplex</h3>
+                <pre id="simplex-matrix"></pre>
+            </div>
+            <button onclick="resetForm()">Reiniciar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
