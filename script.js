@@ -228,7 +228,13 @@ export const transformarDatos = () => {
             restriccion[0] = restriccion[0].map((conjunto) => {
                 return [conjunto[0] * -1, conjunto[1]];
             });
-            restriccion[1] = restriccion[1] === '<=' ? '>=' : '<=';
+            if (restriccion[1] === '<=') {
+                restriccion[1] = '>='
+            } else if (restriccion[1] === '>=') {
+                restriccion[1] = '<='
+            } else {
+                restriccion[1] = '='
+            }
             restriccion[2] = restriccion[2] * -1;
         }
 
