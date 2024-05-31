@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplex Solver</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Solver Método Simplex</h1>
+        <div class="step active" id="step-1">
+            <h2>Paso 1: Número de Variables</h2>
+            <div class="form-group">
+                <label for="cantidad-variables">Número de variables:</label>
+                <input type="number" id="cantidad-variables" min="1" step="1" onkeydown="filtro()">
+            </div>
+            <button onclick="guardarNumeroVariables()">Siguiente</button>
+        </div>
+        <div class="step" id="step-2">
+            <h2>Paso 2: Coeficientes de la Función Objetivo</h2>
+            <div id="coeficientes"></div>
+            <div class="form-group">
+                <label>Tipo de función objetivo:</label>
+                <label><input type="radio" name="tipo-funcion" value="max" checked> Maximizar</label>
+                <label><input type="radio" name="tipo-funcion" value="min"> Minimizar</label>
+            </div>
+            <button onclick="goToPreviousStep(2)">Regresar</button>
+            <button onclick="guardarFuncionObjetivo()">Siguiente</button>
+        </div>
+        <div class="step" id="step-3">
+            <h2>Paso 3: Restricciones</h2>
+            <div id="restricciones"></div>
+            <button onclick="agregarRestriccion()">Agregar restricción</button>
+            <button onclick="eliminarRestriccion()">Eliminar restricción</button>
+            <br>
+            <button onclick="goToPreviousStep(3)">Regresar</button>
+            <button onclick="generarSolucion()">Generar solución</button>
+        </div>
+        <div class="step" id="step-4">
+            <h2>Paso 4: Resultados</h2>
+            <div id="datos-ingresados"></div>
+            <div id="valores-transformados"></div>
+            <div id="simplex-matrix"></div>
+            <button onclick="resetForm()">Reiniciar</button>
+        </div>
+    </div>
+    <script>
+        function filtro()
+        {
+        var tecla = event.key;
+        if (['.','e', ','].includes(tecla))
+           event.preventDefault()
+        }
+        </script>
+    <script src="bundle.js"></script>
+</body>
+</html>
+
